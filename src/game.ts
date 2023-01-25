@@ -106,7 +106,7 @@ class Game {
     }
     this.status.coins = this.status.coins.subtract(price);
     const existing = this.status.equipments[name] ?? 0;
-    this.status.equipments[name] = existing + 1;
+    this.status.equipments[name] = existing + n;
   }
 
   getBuyNPrice(name: string, n: number) {
