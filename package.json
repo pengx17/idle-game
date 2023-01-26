@@ -3,18 +3,13 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "main": "dist/main.es.js",
-  "exports": {
-    ".": "./dist/main.es.js"
-  },
-  "types": "types/main.d.ts",
   "files": [
     "dist",
     "types"
   ],
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "vite build",
     "test": "vitest"
   },
   "dependencies": {
