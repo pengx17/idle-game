@@ -1,4 +1,4 @@
-import { Signal } from "./signal";
+import { Signal } from "../lib/signal";
 
 type GameLoopEvent = "start" | "tick" | "stop";
 
@@ -7,6 +7,7 @@ export class GameLoop {
   stepTime: number;
   accum: number = 0;
   startTime: number = 0;
+  currentTick: number = 0;
   signal = new Signal<GameLoopEvent>();
   running = false;
 
@@ -40,6 +41,7 @@ export class GameLoop {
       this.accum += diff / 1000; // accumulate time
       // iterate as long as the accumulated time is greater than step time
       while (this.accum >= this.stepTime) {
+        this.currentTick ++;
         this.accum -= this.stepTime; // decrease accumulated time
         this.signal.emit("tick"); // emit tick event
       }
