@@ -1,5 +1,5 @@
-import { bigNumber, BigNumber } from "../lib/BigNumber";
-import { GameLoop } from "./game-loop";
+import { bigNumber, BigNumber } from '../lib/BigNumber';
+import { GameLoop } from './game-loop';
 
 export interface Equipment {
   name: string;
@@ -10,65 +10,65 @@ export interface Equipment {
 
 export const allEquipments: Equipment[] = [
   {
-    name: "sword",
+    name: 'sword',
     baseCost: bigNumber(6n),
-    cps: bigNumber("0.1"),
-    icon: "⚔️",
+    cps: bigNumber('0.1'),
+    icon: '⚔️',
   },
   {
-    name: "shield",
+    name: 'shield',
     baseCost: bigNumber(50n),
     cps: bigNumber(1n),
-    icon: "🛡️",
+    icon: '🛡️',
   },
   {
-    name: "armor",
+    name: 'armor',
     baseCost: bigNumber(750n),
     cps: bigNumber(8n),
-    icon: "👕",
+    icon: '👕',
   },
   {
-    name: "helmet",
+    name: 'helmet',
     baseCost: bigNumber(16000n),
     cps: bigNumber(47n),
-    icon: "👒",
+    icon: '👒',
   },
   {
-    name: "boots",
+    name: 'boots',
     baseCost: bigNumber(120000n),
     cps: bigNumber(500n),
-    icon: "👢",
+    icon: '👢',
   },
   {
-    name: "ring",
+    name: 'ring',
     baseCost: bigNumber(1200000n),
     cps: bigNumber(4000n),
-    icon: "💍",
+    icon: '💍',
   },
   {
-    name: "dagger",
+    name: 'dagger',
     baseCost: bigNumber(14000000n),
     cps: bigNumber(35000n),
-    icon: "🗡️",
+    icon: '🗡️',
   },
   {
-    name: "axe",
+    name: 'axe',
     baseCost: bigNumber(580000000n),
     cps: bigNumber(16000n),
-    icon: "🪓",
+    icon: '🪓',
   },
   {
-    name: "magic stuff",
+    name: 'magic stuff',
     baseCost: bigNumber(5400000000n),
     cps: bigNumber(1020000),
-    icon: "🪄",
+    icon: '🪄',
   },
   {
-    name: "bow",
-    baseCost: bigNumber(330000000000n),
+    name: 'bow',
+    baseCost: bigNumber(33000000000n),
     cps: bigNumber(29600000),
-    icon: "🏹",
-  }
+    icon: '🏹',
+  },
 ];
 
 class Game {
@@ -88,9 +88,9 @@ class Game {
 
   save = () => {
     localStorage.setItem(
-      "game-save",
+      'game-save',
       JSON.stringify(this.status, (key, value) => {
-        if (key === "coins") {
+        if (key === 'coins') {
           return value.toString();
         }
         return value;
@@ -99,10 +99,10 @@ class Game {
   };
 
   load = () => {
-    const save = localStorage.getItem("game-save");
+    const save = localStorage.getItem('game-save');
     if (save) {
       this.status = JSON.parse(save, (key, value) => {
-        if (key === "coins") {
+        if (key === 'coins') {
           return bigNumber(value);
         }
         return value;
@@ -211,7 +211,7 @@ class Game {
 
   onTick(cb: () => void) {
     this.loop.signal.on((e) => {
-      if (e === "tick") {
+      if (e === 'tick') {
         cb();
         this.status.timestamp = Date.now();
         if (this.loop.currentTick % 60 === 0) {
