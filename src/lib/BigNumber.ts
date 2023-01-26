@@ -78,7 +78,7 @@ export class BigNumber {
     const int = this.value / this.multiplier;
     const str = int.toString();
     const e = str.length - 1;
-    const frac = str.slice(1);
+    const frac = str.substring(1, 3);
     return `${str[0]}.${frac}e${e}`;
   }
 }
